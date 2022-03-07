@@ -23,7 +23,7 @@ Use your rule with different projects and describe you findings below. See the [
 
 ## Answer
 
-règle XPath : `//IfStatement[count (*//IfStatement//*/IfStatement) >= 1]`
+règle XPath : `//IfStatement//IfStatement//IfStatement`
 
 Fichier XML :  
 ```XML
@@ -46,7 +46,7 @@ Fichier XML :
       <property name="xpath">
          <value>
 <![CDATA[
-//IfStatement[count (*//IfStatement//*/IfStatement) >= 1]
+//IfStatement//IfStatement//IfStatement
 ]]>
          </value>
       </property>
