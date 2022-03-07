@@ -23,3 +23,27 @@ Use your rule with different projects and describe you findings below. See the [
 
 ## Answer
 
+règle XPath : `//IfStatement[count (*//IfStatement//*/IfStatement) >= 1]`
+
+Fichier XML :  
+```XML
+<rule name="PasTroisIf"
+      language="java"
+      message="Trois If imbriqués"
+      class="net.sourceforge.pmd.lang.rule.XPathRule">
+   <description>
+
+   </description>
+   <priority>3</priority>
+   <properties>
+      <property name="version" value="2.0"/>
+      <property name="xpath">
+         <value>
+<![CDATA[
+//IfStatement[count (*//IfStatement//*/IfStatement) >= 1]
+]]>
+         </value>
+      </property>
+   </properties>
+</rule>
+```
