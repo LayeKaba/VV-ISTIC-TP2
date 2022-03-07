@@ -27,7 +27,13 @@ règle XPath : `//IfStatement[count (*//IfStatement//*/IfStatement) >= 1]`
 
 Fichier XML :  
 ```XML
-<rule name="PasTroisIf"
+<?xml version="1.0"?>
+<ruleset name="Custom Rules"
+    xmlns="http://pmd.sourceforge.net/ruleset/2.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://pmd.sourceforge.net/ruleset/2.0.0 https://pmd.sourceforge.io/ruleset_2_0_0.xsd">
+
+    <rule name="PasTroisIf"
       language="java"
       message="Trois If imbriqués"
       class="net.sourceforge.pmd.lang.rule.XPathRule">
@@ -46,4 +52,5 @@ Fichier XML :
       </property>
    </properties>
 </rule>
+</ruleset>
 ```
