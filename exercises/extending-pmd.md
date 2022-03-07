@@ -55,7 +55,7 @@ Fichier XML :
 </ruleset>
 ```
 
-les erreurs detectées   
+les erreurs detectées dans le project commons-cli-master   
  - `D:\commons-cli-master\src\main\java\org\apache\commons\cli\PosixParser.java:151:        PasTroisIf:     Trois If imbriquÚs`  
 ```JAVA
 else if (token.startsWith("--")) {
