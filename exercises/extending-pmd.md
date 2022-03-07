@@ -54,3 +54,53 @@ Fichier XML :
 </rule>
 </ruleset>
 ```
+
+les erreurs detectées   
+ - `D:\commons-cli-master\src\main\java\org\apache\commons\cli\PosixParser.java:151:        PasTroisIf:     Trois If imbriquÚs`  
+```JAVA
+else if (token.startsWith("--")) {
+                final int pos = token.indexOf('=');
+                final String opt = pos == -1 ? token : token.substring(0, pos); // --foo
+
+                final List<String> matchingOpts = options.getMatchingOptions(opt);
+
+                if (matchingOpts.isEmpty()) {
+                    processNonOptionToken(token, stopAtNonOption);
+                } else if (matchingOpts.size() > 1) {
+                    throw new AmbiguousOptionException(opt, matchingOpts);
+                } else {
+                    currentOption = options.getOption(matchingOpts.get(0));
+
+                    tokens.add("--" + currentOption.getLongOpt());
+                    if (pos != -1) {
+                        tokens.add(token.substring(pos + 1));
+                    }
+                }
+            }
+
+```
+
+ - `D:\commons-cli-master\src\main\java\org\apache\commons\cli\PosixParser.java:157:        PasTroisIf:     Trois If imbriqués`  
+```JAVA
+
+ else if (token.startsWith("-")) {
+                if (token.length() == 2 || options.hasOption(token)) {
+                    processOptionToken(token, stopAtNonOption);
+                } else if (!options.getMatchingOptions(token).isEmpty()) {
+                    final List<String> matchingOpts = options.getMatchingOptions(token);
+                    if (matchingOpts.size() > 1) {
+                        throw new AmbiguousOptionException(token, matchingOpts);
+                    }
+                    final Option opt = options.getOption(matchingOpts.get(0));
+                    processOptionToken("-" + opt.getLongOpt(), stopAtNonOption);
+                }
+                // requires bursting
+                else {
+                    burstToken(token, stopAtNonOption);
+                }
+            } else {
+                processNonOptionToken(token, stopAtNonOption);
+            }
+
+
+```
